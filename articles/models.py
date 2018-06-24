@@ -8,3 +8,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def article_body_view(self):
+        if len(self.body)>160:
+            return self.body[:160] + ' ...Read Full'
+        else:
+            return self.body
