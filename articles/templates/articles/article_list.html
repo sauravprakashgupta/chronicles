@@ -1,23 +1,25 @@
-{% extends 'articles/base_template.html' %}
+{% extends 'articles\base_template.html' %}
 
 {% block myBlock1 %}
 <div class="albums-container container-fluid">
 
     <!-- Albums -->
     <div class="row">
-        {% if albums %}
-        {% for album in albums %}
+        {% if all_articles %}
+        {% for article in all_articles %}
         <div class="col-sm-4 col-lg-2">
             <div class="thumbnail">
-                <a href="#">
-                    <img src="{{ album.album_logo.url }}" class="img-responsive">
-                </a>
+                <!-- <a href="#">
+                    <img src="{{ all_articles.album_logo.url }}" class="img-responsive">
+                </a> -->
                 <div class="caption">
-                    <h2>{{ album.album_title }}</h2>
-                    <h4>{{ album.artist }}</h4>
+                    <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+                    <h4>posted on : {{ article.date }}</h4>
+                    <h4>{{ article.slug }}</h4>
+                    <h4>{{ article.article_body_view }}</h4>
 
                     <!-- View Details -->
-                    <a href="#" class="btn btn-primary btn-sm" role="button">View Details</a>
+                    <a href="{% url 'articles:detail' slug=article.slug %}" class="btn btn-primary btn-sm" role="button">View Details</a>
 
                     <!-- Delete Album -->
                     <form action="#" method="post" style="display: inline;">
