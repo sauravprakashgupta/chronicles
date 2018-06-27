@@ -4,4 +4,4 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def signup_view(request):
     formObj = UserCreationForm()
-    return render(request, 'accounts/signup.html',{'myForm':formObj})
+    return render(request, 'accounts/signup.html',{'form':formObj})
